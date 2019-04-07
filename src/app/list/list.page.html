@@ -10,18 +10,16 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-item *ngFor="let item of items">
-      <ion-icon [name]="item.icon" slot="start"></ion-icon>
-      {{item.title}}
-      <div class="item-note" slot="end">
-        {{item.note}}
-      </div>
-    </ion-item>
-  </ion-list>
+<ion-button  (click)="scan()">click</ion-button>
   <!--
     <div *ngIf="selectedItem" padding>
       You navigated here from <b>{{selectedItem.title }}</b>
     </div>
   -->
+    <!-- fab placed to the bottom end -->
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="cancelScan()">
+        <ion-icon name="arrow-dropleft"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
 </ion-content>

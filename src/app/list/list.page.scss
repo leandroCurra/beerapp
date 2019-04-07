@@ -1,1 +1,7 @@
 
+ion-content {
+    background-image: url('../../assets/sanner.png');
+    background-size: cover;
+    background-position: center; /* Center the image */
+    --background: transparent; // you don't need to use a css custom property, but you can of course
+    }
