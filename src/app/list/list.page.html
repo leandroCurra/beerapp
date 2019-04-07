@@ -11,6 +11,16 @@
 
 <ion-content>
 <ion-button  (click)="scan()">click</ion-button>
+<div class="video" style="width:100%">
+  <video id="barcodeScanStream"></video>
+</div>
+
+<div class="inputControls">
+  <div id="deviceready">
+      <!-- 0 is the front camera, 1 is the back camera -->
+      <input type="text" id="barcodeScanDevice" placeholder="1">
+  </div>
+</div>
   <!--
     <div *ngIf="selectedItem" padding>
       You navigated here from <b>{{selectedItem.title }}</b>

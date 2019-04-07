@@ -1,48 +1,42 @@
-import { Component, OnInit } from '@angular/core';
-import { QRScannerStatus, QRScanner } from '@ionic-native/qr-scanner/ngx';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
+declare var cordova;
 
 @Component({
-  selector: 'app-list',
-  templateUrl: 'list.page.html',
-  styleUrls: ['list.page.scss']
+  selector: "app-list",
+  templateUrl: "list.page.html",
+  styleUrls: ["list.page.scss"]
 })
+
 export class ListPage {
 
-  scanSub:Subscription;
-  constructor( private qrScanner: QRScanner) { }
+
+  constructor() {}
   scan() {
-
-  this.qrScanner.prepare()
-  .then((status: QRScannerStatus) => {
-     if (status.authorized) {
-       // camera permission was granted
-
-
-       // start scanning
-       this.scanSub = this.qrScanner.scan().subscribe((text: string) => {
-         console.log('Scanned something', text);
-
-         this.qrScanner.hide(); // hide camera preview
-         this.scanSub.unsubscribe(); // stop scanning
-       });
-
-     } else if (status.denied) {
-       // camera permission was permanently denied
-       // you must use QRScanner.openSettings() method to guide the user to the settings page
-       // then they can grant the permission from there
-     } else {
-       // permission was denied, but not permanently. You can ask for permission again at a later time.
-     }
-  })
-  .catch((e: any) => console.log('Error is', e));
-
-}
-
-cancelScan(){
-
-  this.qrScanner.hide(); // hide camera preview
-  this.scanSub.unsubscribe(); // stop scanning
-}
- 
+    cordova.plugins.barcodeScanner.scan(
+      function (result) {
+          alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+      },
+      function (error) {
+          alert("Scanning failed: " + error);
+      },
+      {
+          preferFrontCamera : true, // iOS and Android
+          showFlipCameraButton : true, // iOS and Android
+          showTorchButton : true, // iOS and Android
+          torchOn: true, // Android, launch with the torch switched on (if available)
+          saveHistory: true, // Android, save scan history (default false)
+          prompt : "Place a barcode inside the scan area", // Android
+          resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+          formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+          orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
+          disableAnimations : true, // iOS
+          disableSuccessBeep: false // iOS and Android
+      }
+   );
+  }
+  cancelScan() {}
 }
