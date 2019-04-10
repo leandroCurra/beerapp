@@ -5,3 +5,36 @@
 //     background-position: center; /* Center the image */
 //     --background: transparent; // you don't need to use a css custom property, but you can of course
 //     }
+
+h1{
+    color:var(--ion-color-medium);
+    font-size:30px;
+}
+.wizard{
+    margin-top:20%;
+}
+
+// ion-content{
+//     --background : linear-gradient(to bottom, rgba(96,104,115,0), rgba(96,104,115,1)); /* Standard syntax (must be last) */
+// }
+ion-fab-button{
+    --color:#ed5f55;
+}
+.icono{
+    color:black;
+}
+
+.beer{
+    font-weight: 900;
+}
+
+
+#slide{
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 2s linear;
+}
+
+
+
+

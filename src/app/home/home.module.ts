@@ -1,3 +1,4 @@
+import { CardComponent } from './../componets/card/card.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +19,6 @@ import { HomePage } from './home.page';
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [HomePage, CardComponent]
 })
 export class HomePageModule {}

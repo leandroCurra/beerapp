@@ -9,3 +9,24 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+ion-toolbar{
+    --border-style:none;
+    ion-buttons{
+            ion-icon{
+                margin-top:20px !important ;
+                font-size: 32px !important;
+              }
+        
+    }
+}
+.label-menu{
+    font-weight: bold;
+}
+ion-menu{
+    --width	:100%;
+ 
+}
+.close-icon{
+    font-size:30px;
+}

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
+import { BrowserQRCodeReader } from '@zxing/library';
 declare var cordova;
 
 @Component({
@@ -8,35 +9,84 @@ declare var cordova;
   styleUrls: ["list.page.scss"]
 })
 
-export class ListPage {
-
-
+export class ListPage implements OnInit{
+   codeReader = new BrowserQRCodeReader();
+   img :string | HTMLImageElement;
+   escanenado = false;
   constructor() {}
-  scan() {
-    cordova.plugins.barcodeScanner.scan(
-      function (result) {
-          alert("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
-      },
-      function (error) {
-          alert("Scanning failed: " + error);
-      },
-      {
-          preferFrontCamera : true, // iOS and Android
-          showFlipCameraButton : true, // iOS and Android
-          showTorchButton : true, // iOS and Android
-          torchOn: true, // Android, launch with the torch switched on (if available)
-          saveHistory: true, // Android, save scan history (default false)
-          prompt : "Place a barcode inside the scan area", // Android
-          resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
-          formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
-          orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
-          disableAnimations : true, // iOS
-          disableSuccessBeep: false // iOS and Android
+ 
+ 
+  async scan(){
+    this.escanenado = true;
+    this.codeReader
+    .getVideoInputDevices()
+    .then(videoInputDevices => {
+      let firstDeviceId = '0';
+      videoInputDevices.forEach(device =>{
+        alert(JSON.stringify(videoInputDevices));
+
+        console.log(`${device.label}, ${device.deviceId}`);
+
+        if( device.label.indexOf( 'back' ) >= 0  ){
+        firstDeviceId = device.deviceId;
+        }
+
       }
-   );
+    );
+      // let firstDeviceId = videoInputDevices[0].deviceId;
+      this.codeReader
+      .decodeFromInputVideoDevice(firstDeviceId, 'video')
+      .then(result => {
+        console.log(result)
+        this.escanenado = false;
+      this.codeReader.reset()})
+      .catch(error => {
+        // this.escanenado = false;
+        console.error(error);
+      });
+
+        // videoInputDevices.forEach(device =>
+        //     console.log(`${device.label}, ${device.deviceId}`)
+            
+        // );
+    })
+    .catch(err =>{
+      console.log( err );
+      // this.escanenado = false;
+
+    });
+
+
+    
+ 
+  
+
+ 
+  //   try {
+  //     const result = await this.codeReader.decodeFromImage(this.img);
+  //     console.log(result); 
+  //    }
+
+  // catch (err) {
+  //     console.error(err);
+  // }
+}
+
+  ngOnInit(){
+  this.img  = <HTMLImageElement>document.getElementById('img');
+
   }
-  cancelScan() {}
+
+  escanear(){
+    setTimeout(() => {
+      this.scan()
+    }, 1000);
+  }
+
+  cancelScan(){
+    this.escanenado = false;
+    this.codeReader.reset();
+
+  }
+
 }

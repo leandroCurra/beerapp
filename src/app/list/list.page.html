@@ -1,35 +1,44 @@
 <ion-header>
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
+    <ion-buttons slot="start" >
+      <ion-menu-button class="icono"></ion-menu-button>
     </ion-buttons>
     <ion-title>
-      List
+      Beer Scan
+      
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-<ion-button  (click)="scan()">click</ion-button>
-<div class="video" style="width:100%">
-  <video id="barcodeScanStream"></video>
-</div>
+<ion-content >
+    <ion-grid  *ngIf="!escanenado"  >
+        <ion-row class="">
+            <ion-col text-center >
+<h1>Escanea el código de barras de tu<br> <span class="beer">!Cerveza!</span></h1>   
+              </ion-col>
+          <ion-col size="8" offset="2" class="wizard" >
+            <ion-img src="../assets/qr.png" id="slide"></ion-img>
 
-<div class="inputControls">
-  <div id="deviceready">
-      <!-- 0 is the front camera, 1 is the back camera -->
-      <input type="text" id="barcodeScanDevice" placeholder="1">
-  </div>
-</div>
-  <!--
-    <div *ngIf="selectedItem" padding>
-      You navigated here from <b>{{selectedItem.title }}</b>
-    </div>
-  -->
-    <!-- fab placed to the bottom end -->
-    <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="cancelScan()">
-        <ion-icon name="arrow-dropleft"></ion-icon>
-      </ion-fab-button>
+          </ion-col>
+
+  </ion-row>
+</ion-grid>
+
+
+<!-- <app-preview *ngIf="escanenado" ></app-preview> -->
+<video *ngIf="escanenado" 
+    id="video"
+    width="100%"
+    height="100%">
+</video> 
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed"*ngIf="!escanenado" >
+      <ion-fab-button (click)="escanear()" color="medium">
+          <ion-icon name="qr-scanner" class="icono"></ion-icon>  
+            </ion-fab-button>
     </ion-fab>
+    <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="escanenado">
+        <ion-fab-button (click)="cancelScan()" color="medium">
+            <ion-icon name="qr-scanner" class="icono"></ion-icon>  
+              </ion-fab-button>
+      </ion-fab>
 </ion-content>

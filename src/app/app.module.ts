@@ -15,9 +15,11 @@ import { AppRoutingModule } from './app-routing.module';
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
-    AppRoutingModule
+    IonicModule.forRoot({mode: 'ios'}),
+    AppRoutingModule,
+    
   ],
+  exports:[],
   providers: [
     StatusBar,
     SplashScreen,
