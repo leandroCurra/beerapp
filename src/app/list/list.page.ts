@@ -21,7 +21,7 @@ export class ListPage implements OnInit{
     this.codeReader
     .getVideoInputDevices()
     .then(videoInputDevices => {
-      let firstDeviceId = '0';
+      let firstDeviceId = 0;
       videoInputDevices.forEach(device =>{
         alert(JSON.stringify(videoInputDevices));
 
