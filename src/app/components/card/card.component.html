@@ -1,0 +1,14 @@
+<ion-card class="welcome-card">
+    <ion-img [src]="beer.imagen" class="img" [ngClass]="{'img-selected':showAnimation} " ></ion-img>
+    <ion-card-header>
+      <ion-card-subtitle>{{beer.subtittulo}}</ion-card-subtitle>
+      <ion-card-title>{{beer.nombre}}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>{{beer.detalle}}
+                
+        </p>
+        <a (click)="presentBeerModal()">ver más</a>
+    </ion-card-content>
+  </ion-card>
+  

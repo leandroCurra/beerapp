@@ -33,12 +33,18 @@
 </video> 
     <ion-fab vertical="bottom" horizontal="end" slot="fixed"*ngIf="!escanenado" >
       <ion-fab-button (click)="escanear()" color="medium">
-          <ion-icon name="qr-scanner" class="icono"></ion-icon>  
+
+          <ion-icon name="reverse" class="icono"></ion-icon>  
             </ion-fab-button>
     </ion-fab>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="escanenado">
         <ion-fab-button (click)="cancelScan()" color="medium">
             <ion-icon name="qr-scanner" class="icono"></ion-icon>  
               </ion-fab-button>
-      </ion-fab>
+    </ion-fab>
+    <ion-fab vertical="top" horizontal="end" slot="fixed" *ngIf="escanenado">
+      <ion-fab-button (click)="changeCamera()" color="medium">
+          <ion-icon name="reverse-camera" class="icono"></ion-icon>  
+            </ion-fab-button>
+  </ion-fab>
 </ion-content>

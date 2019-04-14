@@ -1,0 +1,4 @@
+export const   SLIDER_CONST ={
+SLIDE_FICHA: 0,
+SLIDE_DETALLE: 1
+}

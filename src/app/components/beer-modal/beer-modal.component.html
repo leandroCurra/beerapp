@@ -1,0 +1,40 @@
+<ion-content>
+    <ion-fab vertical="top" horizontal="end" slot="fixed" >
+        <ion-fab-button  class="close" (click)="close()"> 
+            <ion-icon name="close"></ion-icon>
+          </ion-fab-button>
+      </ion-fab>
+
+<ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+        <ion-img src="/assets/scotish.jpg" class="img" [ngClass]="{'img-selected':showAnimation} " ></ion-img>
+      </ion-slide>
+    <ion-slide>
+        <ion-img src="/assets/ipa.jpg" class="img" [ngClass]="{'img-selected':showAnimation} " ></ion-img>
+      </ion-slide>
+    <ion-slide>
+        <ion-img src="/assets/ale.jpg" class="img" [ngClass]="{'img-selected':showAnimation} " ></ion-img>
+      </ion-slide>
+  </ion-slides>
+    <div class="container">
+      <div >
+          <a class="ficha" (click)="changeSlide(CONST_SLIDER.SLIDE_FICHA) " [ngClass]="{'underline': slecttedIndex === CONST_SLIDER.SLIDE_FICHA}"> Ficha</a>
+      </div>
+      <div size="6" class="detalle"  >
+          <a  class="detalle" [ngClass]="{'underline': slecttedIndex === CONST_SLIDER.SLIDE_DETALLE}"
+          (click)="changeSlide(CONST_SLIDER.SLIDE_DETALLE)">Detalle</a>
+        </div>
+    </div>
+  <ion-slides pager="false"  #slide [options]="slideOptsDEttail" (ionSlideTransitionEnd)="change($event)">
+
+
+      <ion-slide>
+        <app-ficha></app-ficha>
+
+      </ion-slide>
+        <ion-slide>
+            <p>detalle</p>      
+          </ion-slide>
+
+    </ion-slides>
+</ion-content>
