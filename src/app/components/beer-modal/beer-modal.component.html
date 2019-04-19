@@ -7,13 +7,13 @@
 
 <ion-slides pager="true" [options]="slideOpts">
     <ion-slide>
-        <ion-img src="/assets/scotish.jpg" class="img" [ngClass]="{'img-selected':showAnimation} " ></ion-img>
+        <ion-img src="/assets/scotish.jpg" class="img"  ></ion-img>
       </ion-slide>
     <ion-slide>
-        <ion-img src="/assets/ipa.jpg" class="img" [ngClass]="{'img-selected':showAnimation} " ></ion-img>
+        <ion-img src="/assets/ipa.jpg" class="img"  ></ion-img>
       </ion-slide>
     <ion-slide>
-        <ion-img src="/assets/ale.jpg" class="img" [ngClass]="{'img-selected':showAnimation} " ></ion-img>
+        <ion-img src="/assets/ale.jpg" class="img"  ></ion-img>
       </ion-slide>
   </ion-slides>
     <div class="container">
@@ -25,7 +25,7 @@
           (click)="changeSlide(CONST_SLIDER.SLIDE_DETALLE)">Detalle</a>
         </div>
     </div>
-  <ion-slides pager="false"  #slide [options]="slideOptsDEttail" (ionSlideTransitionEnd)="change($event)">
+  <ion-slides pager="false"  #slide [options]="slideOpts" (ionSlideTransitionEnd)="change($event)">
 
 
       <ion-slide>

@@ -14,6 +14,9 @@ export class BeerModalComponent implements OnInit {
   public slecttedIndex = 0;
 
 
+  slideOpts = {
+    effect: 'flip'
+  };
   
 
   constructor(private modalController:ModalController) { 

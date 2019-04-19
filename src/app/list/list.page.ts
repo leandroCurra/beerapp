@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
 import { BrowserQRCodeReader } from '@zxing/library';
+import { BeerModalComponent } from '../components/beer-modal/beer-modal.component';
+import { ModalController } from '@ionic/angular';
+import { Beer } from '../clases/beer';
 declare var cordova;
 
 @Component({
@@ -15,7 +18,7 @@ export class ListPage implements OnInit {
   private inputDevices: string[] = [];
   private indiceCamera = 0;
   
-  constructor() {}
+  constructor(private modalController: ModalController) {}
 
   async scan() {
     this.escanenado = true;
@@ -77,6 +80,7 @@ export class ListPage implements OnInit {
     this.codeReader.getVideoInputDevices().then( inputDevices => {
       console.log( 'cantidad de camaras',  inputDevices.length)
       this.codeReader.decodeFromInputVideoDevice( id_camera , 'video').then( data=> {
+        this.showModal();
         console.log( data );
         this.escanenado = false;
         this.codeReader.reset();
@@ -112,14 +116,13 @@ export class ListPage implements OnInit {
     });
   }
 
-  escanear() {
+ public escanear(): void {
     setTimeout(() => {
       this.escan();
     }, 1000);
   }
 
-  cancelScan() {
-    
+  public cancelScan():void {
     this.escanenado = false;
     this.codeReader.reset();
   }
@@ -147,4 +150,21 @@ export class ListPage implements OnInit {
     this.codeReader.reset();
     
   }
+
+  private async showModal(){
+    const beer = new Beer();
+    beer.index = 1;
+    beer.nombre = "IPA";
+    beer.subtittulo = 'Graduación alcohólica y la presencia de lúpulo.';
+    beer.detalle =  `En esencia, dos son los caracteres significativos de este tipo de cerveza:
+     la graduación alcohólica y la presencia de lúpulo.`;
+    beer.imagen = "/assets/ipa.jpg";
+    const modal = await this.modalController.create({
+  component: BeerModalComponent,
+  componentProps: { value: beer }
+});
+
+
+return await modal.present();
+}
 }
