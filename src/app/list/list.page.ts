@@ -109,17 +109,7 @@ export class ListPage implements OnInit {
 
  
   }
-  // public async escan(id_camera?: string) {
-  //   if(  !id_camera ){
-  //     id_camera = this.inputDevices[0];
-  //   }
-  //   console.log( id_camera )
-  //   let devices =  await this.codeReader.getVideoInputDevices();
-  //   const result = await this.codeReader.decodeFromInputVideoDevice( devices[0].deviceId , "video");
-  //   console.log( result )
-  //   this.escanenado = false;
-  //   this.codeReader.reset();
-  // }
+
   private getInputDevices(): Promise< string[] > {
     return new Promise((resolve, reject) => {
       const devices: string[] = [];
