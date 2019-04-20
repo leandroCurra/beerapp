@@ -10,6 +10,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { LottieAnimationViewModule } from 'ng-lottie';
+
 
 
 @NgModule({
@@ -19,6 +21,7 @@ import { environment } from '../environments/environment';
     BrowserModule,
     IonicModule.forRoot({mode: 'ios'}),
     AppRoutingModule,
+
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     
   ],

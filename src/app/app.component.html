@@ -8,18 +8,27 @@
               </ion-buttons>
         </ion-toolbar>
       </ion-header>
-      <ion-content>
-        <ion-list>
+      <div class="menu">
+        <ion-list >
           <ion-menu-toggle auto-hide="true" *ngFor="let p of appPages" >
-            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" lines="none" detail="false">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]" lines="none" detail="false" text-center>
               <!-- <ion-icon slot="start" [name]="p.icon"></ion-icon> -->
-              <ion-label color="medium" cass="label-menu">
+              <ion-label >
                 {{p.title}}
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
         </ion-list>
-      </ion-content>
+        <div class="row" >
+          <ion-item lines="none" detail="false" text-center>
+             <ion-label>
+            Cerrar
+            </ion-label> 
+          </ion-item>
+        
+        
+        </div>
+      </div>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>

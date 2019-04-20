@@ -8,12 +8,14 @@ import { RouterModule } from '@angular/router';
 import { FichaComponent } from '../components/ficha/ficha.component'
 import { HomePage } from './home.page';
 import { ProgressComponent } from '../components/progress/progress.component';
+import { BeerModalModule } from '../components/beer-modal/beer.modal.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    BeerModalModule,
     RouterModule.forChild([
       {
         path: '',
@@ -21,9 +23,9 @@ import { ProgressComponent } from '../components/progress/progress.component';
       }
     ])
   ],
-  declarations: [HomePage, CardComponent,  BeerModalComponent, FichaComponent, ProgressComponent],
-  exports: [ BeerModalComponent, FichaComponent, ProgressComponent],
-  entryComponents: [BeerModalComponent, FichaComponent, ProgressComponent],
+  declarations: [HomePage, CardComponent],
+  exports: [ ],
+  entryComponents: [BeerModalComponent],
 
 
 })

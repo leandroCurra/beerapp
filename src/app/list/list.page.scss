@@ -11,9 +11,7 @@ h1{
     font-size:30px;
     font-weight: normal;
 }
-.wizard{
-    margin-top:20%;
-}
+
 
 // ion-content{
 //     --background : linear-gradient(to bottom, rgba(96,104,115,0), rgba(96,104,115,1)); /* Standard syntax (must be last) */
@@ -26,6 +24,7 @@ ion-fab-button{
 }
 
 .beer{
+    color: var(--ion-color-primary);
     font-weight: 900;
 }
 

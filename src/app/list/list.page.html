@@ -14,10 +14,17 @@
     <ion-grid  *ngIf="!escanenado"  >
         <ion-row class="">
             <ion-col text-center >
-<h1>Escanea el código de barras de tu<br> <span class="beer">!Cerveza!</span></h1>   
+<h1>Escaneá el código<br> <span class="beer">! QR !</span></h1>   
               </ion-col>
-          <ion-col size="8" offset="2" class="wizard" >
-            <ion-img src="../assets/qr.png" id="slide"></ion-img>
+          <ion-col size="10" offset="1" class="wizard" >
+            <!-- <ion-img src="../assets/qr.png" id="slide"></ion-img> -->
+            <!-- <lottie-animation-view
+                    [options]="lottieConfig"
+                    width="auto"
+                    height="300"
+                    (animCreated)="handleAnimation($event)">
+              </lottie-animation-view> -->
+              <div id="animation" #animation style="width:100%;height: auto"></div>
 
           </ion-col>
 
@@ -34,7 +41,7 @@
     <ion-fab vertical="bottom" horizontal="end" slot="fixed"*ngIf="!escanenado" >
       <ion-fab-button (click)="escanear()" color="medium">
 
-          <ion-icon name="reverse" class="icono"></ion-icon>  
+          <ion-icon name="qr-scanner" color="primary" class="icono"></ion-icon>  
             </ion-fab-button>
     </ion-fab>
     <ion-fab vertical="bottom" horizontal="end" slot="fixed" *ngIf="escanenado">

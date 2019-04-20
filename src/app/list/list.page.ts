@@ -1,10 +1,10 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { Subscription } from "rxjs";
 import { BrowserQRCodeReader } from '@zxing/library';
 import { BeerModalComponent } from '../components/beer-modal/beer-modal.component';
 import { ModalController } from '@ionic/angular';
 import { Beer } from '../clases/beer';
-declare var cordova;
+import * as  AnimationItem from '../../assets/js/lottie/lottie';
 
 @Component({
   selector: "app-list",
@@ -17,8 +17,22 @@ export class ListPage implements OnInit {
   public escanenado: boolean = false;
   private inputDevices: string[] = [];
   private indiceCamera = 0;
+  public lottieConfig: Object;
+  animation:any;
+  @ViewChild('animation') nameInputRef;
+
+     private animationSpeed: number = 1;
+
   
-  constructor(private modalController: ModalController) {}
+  constructor(private modalController: ModalController) {  
+//           this.lottieConfig = {
+//     path: './assets/lottie/sanner.json',
+//     renderer: 'canvas',
+//     autoplay: false,
+//     loop: true
+// };
+
+  }
 
   async scan() {
     this.escanenado = true;
@@ -64,7 +78,11 @@ export class ListPage implements OnInit {
   async ngOnInit() {
     this.img = <HTMLImageElement>document.getElementById("img");
     this.inputDevices = await this.getInputDevices();
+    this.showAnimation();
+  
+ 
   }
+
 
   public async escan(id_camera?: string) {
     if(  !id_camera ){
@@ -84,6 +102,7 @@ export class ListPage implements OnInit {
         console.log( data );
         this.escanenado = false;
         this.codeReader.reset();
+        this.showAnimation();
       })
 
     });
@@ -125,6 +144,10 @@ export class ListPage implements OnInit {
   public cancelScan():void {
     this.escanenado = false;
     this.codeReader.reset();
+    this.showAnimation();
+
+  
+  
   }
   public changeCamera(): void {
     
@@ -163,8 +186,21 @@ export class ListPage implements OnInit {
   component: BeerModalComponent,
   componentProps: { value: beer }
 });
-
-
 return await modal.present();
+}
+
+private showAnimation(): void {
+  setTimeout(() => {
+    const test = <HTMLImageElement>document.getElementById("animation");
+
+    const lottieAnimation = AnimationItem.loadAnimation({
+      container: test, // ID del div
+      path: './assets/js/lottie/sanner.json', // Ruta fichero .json de la animación
+      renderer: 'svg', // Requerido
+      loop: true, // Opcional
+      autoplay: true, // Opcional
+      name: "Hello World", // Opcional
+    })
+  }, 500);
 }
 }

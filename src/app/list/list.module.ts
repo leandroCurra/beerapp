@@ -6,12 +6,23 @@ import { RouterModule } from '@angular/router';
 
 import { ListPage } from './list.page';
 import { PreviewComponent } from '../preview/preview.component';
+import { LottieAnimationViewModule } from 'ng-lottie';
+import { BeerModalComponent } from '../components/beer-modal/beer-modal.component';
+import { FichaComponent } from '../components/ficha/ficha.component';
+import { ProgressComponent } from '../components/progress/progress.component';
+import { BeerModalModule } from '../components/beer-modal/beer.modal.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    BeerModalModule,
+    
+
+    
+    
+
     RouterModule.forChild([
       {
         path: '',
@@ -19,6 +30,8 @@ import { PreviewComponent } from '../preview/preview.component';
       }
     ])
   ],
-  declarations: [ListPage,PreviewComponent]
+  declarations: [ListPage, PreviewComponent],
+  entryComponents: [BeerModalComponent],
+
 })
 export class ListPageModule {}
