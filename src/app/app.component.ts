@@ -16,7 +16,7 @@ export class AppComponent {
       icon: 'home'
     },
     {
-      title: 'Escaner',
+      title: 'Beer Code',
       url: '/list',
       icon: 'list'
     }
