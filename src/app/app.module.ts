@@ -11,11 +11,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { LottieAnimationViewModule } from 'ng-lottie';
+import { PromoComponent } from './promo/promo.component';
 
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, PromoComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
