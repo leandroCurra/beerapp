@@ -1,0 +1,56 @@
+:host{
+    height: 100%;
+    width:100%;
+}
+.container{
+    height: 100%;
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    justify-content: start;
+
+    // background-image: url('../../assets/promo.jpg');
+    // height: 100%;
+    // width:auto;
+    .header{
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        height: 20%;;
+        justify-content: center;
+        font-family: 'Luckiest Guy', cursive;
+        .title{
+            font-size:22pt;
+            font-weight: 1000;
+            text-shadow: 3px 3px #f3a32a;
+
+        }
+        .subtitle{
+            margin:0;
+            font-size:11pt;
+            
+        }
+    }
+    .inicio{
+        display: flex;
+        justify-content: center;
+        // background-color: #fbaa1b;
+        width:100%;
+        height: 50%;
+
+    }
+    .segundo{
+        display: flex;
+        flex-direction: column;
+        width:100%;
+        height:30%;
+        justify-content: center;
+        .button-canje{
+            margin-left:5%;
+            margin-right: 5%;
+            width:90%;
+            --background:#bf2a30;
+        }
+    }
+
+}

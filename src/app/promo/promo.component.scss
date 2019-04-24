@@ -1,59 +1,18 @@
-.container{
+
+ion-slides{
     height: 100%;
-    display:flex;
-    flex-direction: column;
-    justify-content: start;
-
-    // background-image: url('../../assets/promo.jpg');
-    // height: 100%;
-    // width:auto;
-    .header{
-        display: flex;
-        flex-direction: column;
-        background-color: #fbaa1b;
-        width:100%;
-        height: 20%;;
-        justify-content: center;
-        font-family: 'Luckiest Guy', cursive;
-        .title{
-            font-size:22pt;
-            color: #3b2124;
-            font-weight: 1000;
-        }
-        .subtitle{
-            margin:0;
-            font-size:11pt;
-            color: #3b2124;
-            
-        }
-    }
-    .inicio{
-        display: flex;
-        background-color: #fbaa1b;
-        width:100%;
-        height: 50%;
-        background-image: url('../../assets/promo.jpg');
-        background-position: center; /* Center the image */
-        background-repeat: no-repeat; /* Do not repeat the image */
-     
-
-        
-
-
-    }
-    .segundo{
-        display: flex;
-        flex-direction: column;
-        background-color: #fbaa1b;
-        width:100%;
-        height:30%;
-        justify-content: center;
-        .button-canje{
-            margin-left:5%;
-            margin-right: 5%;
-            width:90%;
-            --background:#bf2a30;
-        }
-    }
+    width:100%;
+}
+ion-slide{
+    width:100%;
 
 }
+.close{
+    --background	:rgb(0,0,0,0.3);
+    --color	:white;
+    --ripple-color	:black;
+    --color-activated	:white;
+    --background-focused	:black;
+    --background-activated:rgb(0,0,0) ;
+    
+  }

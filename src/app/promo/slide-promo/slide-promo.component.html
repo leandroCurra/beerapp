@@ -1,0 +1,17 @@
+<div class="container" [ngStyle]="{'background-color' : promo.color}">
+    <div class="header"  text-center>
+      <h1 class="title" [ngStyle]="{'color': promo.fontColor}">{{promo.title}}</h1>
+      <h3  class="subtitle" [ngStyle]="{'color': promo.fontColor}" >{{promo.subtitle}}</h3>
+
+      </div>
+  <div class="inicio" text-center >
+      <ion-img [src]="promo.image"></ion-img>
+
+
+  </div>
+  <div class="segundo">
+      <ion-button expand="block" class="button-canje">Canjear</ion-button>
+
+  </div>
+
+</div>
