@@ -21,7 +21,6 @@ import { LottieAnimationViewModule } from 'ng-lottie';
     BrowserModule,
     IonicModule.forRoot({mode: 'ios'}),
     AppRoutingModule,
-
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     
   ],
