@@ -23,7 +23,6 @@ import { SlidePromoComponent } from './promo/slide-promo/slide-promo.component';
     BrowserModule,
     IonicModule.forRoot({mode: 'ios'}),
     AppRoutingModule,
-
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     
   ],

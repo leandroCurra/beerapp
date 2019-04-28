@@ -1,15 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { Platform, MenuController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { SwPush } from '@angular/service-worker';
-
+import { environment } from 'src/environments/environment';
+import {firebase} from '@firebase/app';
+import { NotificationService } from './services/notification.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
   public appPages = [
     {
       title: 'Inicio',
@@ -33,10 +35,19 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private menuController: MenuController,
-    private swPush: SwPush,
-    //  private newsletterService: NewsletterService
+    private notificationsService:NotificationService
   ) {
     this.initializeApp();
+  }
+  async ngOnInit() {
+
+  }
+  async ngAfterViewInit() {
+    this.platform.ready().then(async () => {
+      firebase.initializeApp(environment.firebase);  
+      await this.notificationsService.init();
+      await this.notificationsService.requestPermission();
+   });
   }
 
   initializeApp() {
@@ -52,13 +63,7 @@ export class AppComponent {
     this.menuController.close();
 
   }
-  subscribeToNotifications() {
-
-    this.swPush.requestSubscription({
-        serverPublicKey: 'BONnElNhG-VfQosf8dPqW50P9B8xI-MEG7EcPinEk61Yz1xlXD9VWuTlDVAspcrW5-tHDnLIGkSSwOMpPO8mB5M'
-    })
-    .then(sub =>{ console.log(sub)})
-    .catch(err => console.error("Could not subscribe to notifications", err));
+  
 }
 }
 
