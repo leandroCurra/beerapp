@@ -20,6 +20,10 @@ const routes: Routes = [
     path: 'promo',
     component: PromoComponent
   },
+  {
+    path: 'login',
+    loadChildren: './pages/login-container/login-container.module#LoginContainerModule'
+  },
   { path: '**', redirectTo: '' }
 
 ];
