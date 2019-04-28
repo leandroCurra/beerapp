@@ -1,0 +1,19 @@
+
+  
+  <ion-content >
+      <ion-fab vertical="top" horizontal="start" slot="fixed" >
+          <ion-fab-button  class="close" (click)="toogleMenu()"> 
+              <ion-icon name="close"></ion-icon>
+            </ion-fab-button>
+        </ion-fab>
+  
+  <ion-slides pager="true">
+    <ion-slide *ngFor="let promotion of promos" >
+  
+      <app-slide-promo [promo]="promotion"></app-slide-promo>
+    </ion-slide>
+
+
+</ion-slides>
+  </ion-content>
+  

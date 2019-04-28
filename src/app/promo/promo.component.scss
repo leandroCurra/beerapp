@@ -1,0 +1,18 @@
+
+ion-slides{
+    height: 100%;
+    width:100%;
+}
+ion-slide{
+    width:100%;
+
+}
+.close{
+    --background	:rgb(0,0,0,0.3);
+    --color	:white;
+    --ripple-color	:black;
+    --color-activated	:white;
+    --background-focused	:black;
+    --background-activated:rgb(0,0,0) ;
+    
+  }
